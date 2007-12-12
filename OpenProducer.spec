@@ -13,7 +13,7 @@ License:	GPL
 Group:		Development/C++
 Source0:	%{aname}-%{version}-%{cvsdate}.tar.bz2
 URL:		http://www.andesengineering.com/BlueMarbleViewer/producer_install.html
-BuildRequires:	XFree86-devel MesaGLU-devel OpenThreads >= 1.4.1 
+BuildRequires:	X11-devel MesaGLU-devel OpenThreads >= 1.4.1 
 BuildRoot:	%{_tmppath}%{name}-%{version}-%{release}-buildroot
 
 %description

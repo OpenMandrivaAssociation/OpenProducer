@@ -12,8 +12,12 @@ Epoch:		1
 License:	GPL
 Group:		Development/C++
 Source0:	%{aname}-%{version}-%{cvsdate}.tar.bz2
+Patch0:		Producer-1.0.1-gcc43.patch
 URL:		http://www.andesengineering.com/BlueMarbleViewer/producer_install.html
-BuildRequires:	X11-devel MesaGLU-devel OpenThreads >= 1.4.1 
+BuildRequires:	libx11-devel
+BuildRequires:	MesaGLU-devel
+BuildRequires:	libxmu-devel
+BuildRequires:	openscenegraph-devel
 BuildRoot:	%{_tmppath}%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -35,10 +39,11 @@ Producer to handle all the complexity for them.
 			   
 %prep
 %setup -q -n %{aname}
+%patch0 -p0
 rm -rf `find -type d -name CVS`
 
 %build
-%make CXX="%{__cxx} $RPM_OPT_FLAGS -fPIC"
+%make CXX="%{__cxx} %optflags -fPIC"
 
 %install
 %{__rm} -rf $RPM_BUILD_ROOT

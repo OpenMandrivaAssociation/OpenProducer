@@ -1,8 +1,10 @@
+%define debug_package %{nil}
+
 %define	name	OpenProducer
 %define	aname	Producer
 %define	version	1.0.1
 %define	cvsdate	200601122325
-%define	release %mkrel 4
+%define	release 5
 
 Summary:	Cross-platform libray for Opengl rendering
 Name:		%{name}
@@ -14,11 +16,10 @@ Group:		Development/C++
 Source0:	%{aname}-%{version}-%{cvsdate}.tar.bz2
 Patch0:		Producer-1.0.1-gcc43.patch
 URL:		http://www.andesengineering.com/BlueMarbleViewer/producer_install.html
-BuildRequires:	libx11-devel
-BuildRequires:	MesaGLU-devel
-BuildRequires:	libxmu-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	mesaglu-devel
+BuildRequires:	pkgconfig(xmu)
 BuildRequires:	openscenegraph-devel
-BuildRoot:	%{_tmppath}%{name}-%{version}-%{release}-buildroot
 
 %description
 Open Producer (or simply Producer) is a cross-platform, C++ library
@@ -61,3 +62,51 @@ export ARCH_EXT=64
 %{_libdir}/lib%{aname}.so
 %{_includedir}/%{aname}
 
+
+
+%changelog
+* Mon Jan 03 2011 Funda Wang <fwang@mandriva.org> 1:1.0.1-4mdv2011.0
++ Revision: 627702
+- tighten br
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+
+* Thu Jan 03 2008 Olivier Blin <oblin@mandriva.com> 1:1.0.1-1mdv2008.1
++ Revision: 141036
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+    - buildrequires X11-devel instead of XFree86-devel
+    - import OpenProducer
+
+
+* Fri Jan 13 2006 Per Ã˜yvind Karlsen <pkarlsen@mandriva.com> 1.0.1-1mdk
+- 1.0.1
+- fix lib64 path
+- %%mkrel
+
+* Tue Jun 15 2004 Per Øyvind Karlsen <peroyvind@linux-mandrake.com> 0.8.4-2mdk
+- new cvs snapshot
+- fix buildrequires
+- compile with -fpermissive to allow build with gcc-3.4
+
+* Mon Nov 24 2003 Per Ã˜yvind Karlsen <peroyvind@linux-mandrake.com> 0.8.4-1mdk
+- new cvs snapshot
+
+* Sun Aug 24 2003 Michael Scherer <scherer.michael@free.fr> 0.8.2-2mdk
+- Buildrequires libMesaGLU1-devel 
+
+* Mon Jun 16 2003 Per Ã˜yvind Karlsen <peroyvind@sintrax.net> 0.8.2-1mdk
+- new cvs snapshot
+- use the real version, Epoch tag to handle this
+- fix group
+
+* Fri Apr 25 2003 Per Ã˜yvind Karlsen <peroyvind@sintrax.net> 20030422-2mdk
+- fixed BuildRequires
+- less clutter from deleting CVS stuff
+
+* Wed Apr 23 2003 Per Ã˜yvind Karlsen <peroyvind@sintrax.net> 20030422-1mdk
+- initial mdk release

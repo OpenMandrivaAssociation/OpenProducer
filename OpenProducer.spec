@@ -4,7 +4,7 @@
 %define	aname	Producer
 %define	version	1.0.1
 %define	cvsdate	200601122325
-%define	release 5
+%define release 6
 
 Summary:	Cross-platform libray for Opengl rendering
 Name:		%{name}

@@ -16,6 +16,7 @@ Group:		Development/C++
 Source0:	%{aname}-%{version}-%{cvsdate}.tar.bz2
 Patch0:		Producer-1.0.1-gcc43.patch
 URL:		https://www.andesengineering.com/BlueMarbleViewer/producer_install.html
+BuildRequires:	make
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	mesaglu-devel
 BuildRequires:	pkgconfig(xmu)
